@@ -28,7 +28,7 @@ const ProductsByCategorie = ({ categorie }: { categorie: string }) => {
     
 
   return (
-      <div className="mt-10">
+      <div className="mt-10 w-5/6">
           <h1 className="text-3xl mb-5">{categorie}</h1>
           <div className="flex">
           {data?.map(product => (

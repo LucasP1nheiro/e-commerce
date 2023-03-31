@@ -7,8 +7,8 @@ type ProductsType =  {
 
 const ProductCard = ( {title, price, thumbnail, brand} : ProductsType) => {
   return (
-    <div className="border-2 p-2 w-5/6">
-      <img src={thumbnail} alt={`${title} Image`} className="" />
+    <div className="border-2 p-2 w-full">
+      <img src={thumbnail} alt={`${title} Image`} className="h-56 w-full" />
           <h1>{title}</h1>
           <p>{brand}</p>
       <p>{price}</p>
