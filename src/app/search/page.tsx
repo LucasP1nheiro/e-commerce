@@ -3,6 +3,7 @@
 import axios from 'axios';
 import {  useSearchParams } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
+import ProductCard from '../components/ProductCard';
 
 interface ProductsType   {
   id: number,
@@ -31,14 +32,16 @@ const page = () => {
   }, [])
 
   return (
-    <>
-      <h1>Teste</h1>
+    <div className="mt-20 flex flex-col items-center">
+      <h1 className="text-3xl">Showing search results for : {search}</h1>
 
 
+      <div className="w-5/6 flex">
       {data?.map(product => (
-        <h2>{product.title}</h2>
+        <ProductCard title={product.title} price={product.price} thumbnail={product.thumbnail} brand={product.brand} rating={product.rating} />
       ))}
-    </>
+      </div>
+    </div>
   )
 }
 
