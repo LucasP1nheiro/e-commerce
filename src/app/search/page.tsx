@@ -32,11 +32,11 @@ const page = () => {
   }, [])
 
   return (
-    <div className="mt-20 flex flex-col items-center">
+    <div className="mt-20 flex flex-col items-center gap-10">
       <h1 className="text-3xl">Showing search results for : {search}</h1>
 
 
-      <div className="w-5/6 flex">
+      <div className="w-5/6 flex gap-4">
       {data?.map(product => (
         <ProductCard title={product.title} price={product.price} thumbnail={product.thumbnail} brand={product.brand} rating={product.rating} />
       ))}

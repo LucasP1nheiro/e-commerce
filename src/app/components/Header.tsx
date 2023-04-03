@@ -1,12 +1,15 @@
 'use client'
 
+import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react'
+
 
 const header = () => {
   const [search, setSearch] = useState("")
+  
 
   const handleSearch = () => {
-    // passar como parametro de link o search para a pagina de busca
+    //teste
   }
 
   return (
