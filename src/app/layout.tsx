@@ -1,6 +1,6 @@
 import { Inter } from 'next/font/google'
-import Header from './components/Header'
 import './globals.css'
+import Header from './components/Header'
 
 
 export const metadata = {
@@ -19,7 +19,6 @@ export default function RootLayout({
     
   return (
     <html lang="en">
-     
       <body className={"overflow-x-hidden " + inter.className}>
         <Header />
         {children}

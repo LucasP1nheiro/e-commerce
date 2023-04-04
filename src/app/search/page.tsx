@@ -5,6 +5,8 @@ import {  useSearchParams } from 'next/navigation'
 import React, { useCallback, useEffect, useState } from 'react'
 import ProductCard from '../components/ProductCard'
 import Loading from '../loading'
+import Header from '../components/Header';
+
 
 interface ProductsType   {
   id: number,
@@ -22,14 +24,13 @@ interface ProductsType   {
 
 const page = () => {
   const [data, setData] = useState<ProductsType[]>([])
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
   const searchParams = useSearchParams();
-
   const search = searchParams.get('q');
 
-  const handleFetch = async () => {
-    setIsLoading(true)
+  
 
+  const handleFetch = async () => {
     await axios.get(`https://dummyjson.com/products/search?q=${search}`)
     .then(response => setData(response.data.products))
       
@@ -37,13 +38,13 @@ const page = () => {
   }
 
   useEffect(() => {
-    
     handleFetch()
-  }, [])
+  }, [search])
 
   
   return (
     <>
+
       {isLoading && (
         <div className="mt-20 w-screen flex justify-center">
           <Loading />
@@ -57,9 +58,10 @@ const page = () => {
     
           <div className="w-5/6 flex gap-10 flex-wrap items-center ">
           {data?.map(product => (
-            <ProductCard title={product.title} price={product.price} thumbnail={product.thumbnail} brand={product.brand} rating={product.rating} />
+            <ProductCard key={product.id} title={product.title} price={product.price} thumbnail={product.thumbnail} brand={product.brand} rating={product.rating} />
           ))}
           </div>
+
         </main>
       )}
     </>
