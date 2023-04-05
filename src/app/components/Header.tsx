@@ -26,6 +26,11 @@ const Header = () => {
   const [shouldRedirect, setShouldRedirect] = useState(false)
   const { push } = useRouter()
 
+  const clearInput = () => {
+    // this function clears input when the user clicks in the possible products component
+    setSearch("")
+  }
+
   const handleRedirect = (e: {key: string}) => {
     if (e.key === 'Enter' && search !== '') {
       setShouldRedirect(true)
@@ -75,7 +80,12 @@ const Header = () => {
         <div className="absolute top-14">
         {data.map((product, i) =>
           i < 9 &&  (
-            <PossibleProducts thumbnail={product.thumbnail} title={product.title} id={product.id} />
+            <PossibleProducts
+              thumbnail={product.thumbnail}
+              title={product.title}
+              id={product.id} 
+              clearInput={clearInput}
+            />
           )
         )}
         </div>
