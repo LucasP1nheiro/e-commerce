@@ -1,8 +1,9 @@
 'use client'
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
-import React, { FormEvent, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import PossibleProducts from './PossibleProducts'
+import Link from 'next/link'
 
 interface ProductsType {
   id: number,
@@ -26,7 +27,7 @@ const Header = () => {
   const { push } = useRouter()
 
   const handleRedirect = (e: {key: string}) => {
-    if (e.key === 'Enter') {
+    if (e.key === 'Enter' && search !== '') {
       setShouldRedirect(true)
     }
   }
@@ -59,7 +60,9 @@ const Header = () => {
   return (
     <div className="w-screen h-[7vh] flex justify-around items-center fixed z-50 bg-blue-500 top-0 left-0">
     
+      <Link href='/'>
       <p>Header</p>
+      </Link>
       <div className="flex flex-col">
       <input
           placeholder="Search product"
@@ -72,7 +75,7 @@ const Header = () => {
         <div className="absolute top-14">
         {data.map((product, i) =>
           i < 9 &&  (
-            <PossibleProducts thumbnail={product.thumbnail} title={product.title} />
+            <PossibleProducts thumbnail={product.thumbnail} title={product.title} id={product.id} />
           )
         )}
         </div>

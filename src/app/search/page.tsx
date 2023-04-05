@@ -58,7 +58,7 @@ const page = () => {
     
           <div className="w-5/6 flex gap-10 flex-wrap items-center ">
           {data?.map(product => (
-            <ProductCard key={product.id} title={product.title} price={product.price} thumbnail={product.thumbnail} brand={product.brand} rating={product.rating} />
+            <ProductCard key={product.id} title={product.title} price={product.price} thumbnail={product.thumbnail} brand={product.brand} rating={product.rating} id={product.id} />
           ))}
           </div>
 
