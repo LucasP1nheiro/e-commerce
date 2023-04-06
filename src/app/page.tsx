@@ -13,8 +13,8 @@ export default function Home() {
   
   
   
-  const handleFetch = () => {
-    axios.get('https://dummyjson.com/products/categories')
+  const handleFetch = async () => {
+   await axios.get('https://dummyjson.com/products/categories')
       .then(response => setCategories(response.data))
     
     setIsLoading(false)

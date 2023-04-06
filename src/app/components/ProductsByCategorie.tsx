@@ -22,9 +22,14 @@ const ProductsByCategorie = ({ categorie }: { categorie: string }) => {
     
     const [data, setData] = useState<ProductsType[]>([])
 
-    axios.get(`https://dummyjson.com/products/category/${categorie}`) 
-    .then(response => setData(response.data.products))
+    const handleFetch = async () => {
+        await axios.get(`https://dummyjson.com/products/category/${categorie}`) 
+        .then(response => setData(response.data.products))
+    }
     
+    useEffect(() => {
+        handleFetch()
+    }, [])
     
 
   return (
