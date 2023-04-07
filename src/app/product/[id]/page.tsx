@@ -2,7 +2,8 @@
 
 import axios from 'axios'
 import {usePathname} from 'next/navigation'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
+import {CartContext} from '../../context/CartContext'
 
 interface ProductsType {
     id: number,
@@ -22,13 +23,17 @@ const page = () => {
     // getting id like this while useParams doesn't work
     const path = usePathname()
     const id = path.replace('/product/', '')
-
     const [data, setData] = useState<ProductsType | null>(null)
     const [activeImage, setActiveImage] = useState("a")
+    const {cart, setCart} = useContext(CartContext)
 
     const handleFetch = async () => {
         await axios.get(`https://dummyjson.com/products/${id}`)
         .then(response => setData(response.data))
+    }
+
+    const addToCart = () => {
+        if (data) setCart([...cart, data])
     }
 
     useEffect(() => {
@@ -38,6 +43,7 @@ const page = () => {
     useEffect(() => {
         if (data !== null) setActiveImage(data.images[0])
     }, [data])
+
 
 
   return (
@@ -66,7 +72,12 @@ const page = () => {
               )}
               <p>{data?.description}</p>
               <p>{data?.brand}</p>
-              <button className="bg-blue-500 text-white uppercase p-5 w-1/3">Add to cart</button>
+              <button
+                  onClick={() => addToCart()}
+                  className="bg-blue-500 text-white uppercase p-5 w-1/3"
+              >
+                  Add to cart
+              </button>
           </div>
 
 

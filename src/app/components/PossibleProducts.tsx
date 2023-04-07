@@ -11,7 +11,7 @@ const PossibleProducts = ({thumbnail, title, id, clearInput}: PossibleProductsPr
   return (
       <Link
           href={`/product/${id}`}
-          className="w-full flex bg-white gap-4 items-center"
+          className="w-full flex bg-white gap-4 items-center overflow-x-hidden"
           onClick={() => clearInput()}
       >
           <img

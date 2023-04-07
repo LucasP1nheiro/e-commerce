@@ -1,7 +1,9 @@
 import { Inter } from 'next/font/google'
 import './globals.css'
 import Header from './components/Header'
-
+import CartModal from './components/CartModal'
+import IsModalOpenContextProvider from './context/IsModalOpenContext'
+import CartContextProvider from './context/CartContext'
 
 export const metadata = {
   title: 'E-commerce',
@@ -18,11 +20,16 @@ export default function RootLayout({
   
     
   return (
-    <html lang="en">
-      <body className={"overflow-x-hidden " + inter.className}>
-        <Header />
-        {children}
-      </body>
-    </html>
+    <CartContextProvider>
+      <IsModalOpenContextProvider>
+        <html lang="en">
+          <body className={"overflow-x-hidden " + inter.className}>
+            <Header />
+            {children}
+            <CartModal />
+          </body>
+        </html>
+      </IsModalOpenContextProvider>
+    </CartContextProvider>
   )
 }

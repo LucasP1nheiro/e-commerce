@@ -3,6 +3,7 @@ import axios from 'axios'
 import { useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 import PossibleProducts from './PossibleProducts'
+import Cart from './Cart'
 import Link from 'next/link'
 
 interface ProductsType {
@@ -25,6 +26,7 @@ const Header = () => {
   const [data, setData] = useState<ProductsType[]>([])
   const [shouldRedirect, setShouldRedirect] = useState(false)
   const { push } = useRouter()
+  
 
   const clearInput = () => {
     // this function clears input when the user clicks in the possible products component
@@ -38,7 +40,7 @@ const Header = () => {
   }
 
   const handleSearch = async () => {
-    if (search !== '') {
+    if (search.length > 2) {
       await axios.get(`https://dummyjson.com/products/search?q=${search}`)
       .then(response => setData(response.data.products))
     } else {
@@ -63,32 +65,35 @@ const Header = () => {
 
 
   return (
-    <div className="w-screen h-[7vh] flex justify-around items-center fixed z-50 bg-blue-500 top-0 left-0">
+    <div className="w-screen h-[7vh] flex justify-around items-center fixed z-10 bg-blue-500 top-0 left-0">
     
       <Link href='/'>
       <p>Header</p>
       </Link>
-      <div className="flex flex-col">
-      <input
-          placeholder="Search product"
-          type="text"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="outline-none p-1 rounded-sm fixed top-5"
-          onKeyDown={(e) => handleRedirect(e)}
-        />
-        <div className="absolute top-14">
-        {data.map((product, i) =>
-          i < 9 &&  (
-            <PossibleProducts
-              thumbnail={product.thumbnail}
-              title={product.title}
-              id={product.id} 
-              clearInput={clearInput}
+      <div className="flex gap-4 items-center">
+        <div className="flex flex-col">
+            <input
+              placeholder="Search product"
+              type="text"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="outline-none p-1 rounded-sm"
+              onKeyDown={(e) => handleRedirect(e)}
             />
-          )
-        )}
+            <div className="absolute top-14">
+              {data.map((product, i) =>
+                i < 9 &&  (
+                  <PossibleProducts
+                    thumbnail={product.thumbnail}
+                    title={product.title}
+                    id={product.id} 
+                    clearInput={clearInput}
+                  />
+                )
+              )}
+            </div>
         </div>
+        <Cart />
       </div>
     </div>
   )
