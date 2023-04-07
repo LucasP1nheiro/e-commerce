@@ -33,7 +33,7 @@ const page = () => {
     }
 
     const addToCart = () => {
-        if (data) setCart([...cart, data])
+        if (data && !cart.includes(data)) setCart([...cart, data])
     }
 
     useEffect(() => {
@@ -53,6 +53,7 @@ const page = () => {
             <div>
                 {data?.images.map(image => (
                     <img
+                        key={image}
                         src={image}
                         alt={`${data.title} Image`}
                         className="h-12 w-12 cursor-pointer py-2"

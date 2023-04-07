@@ -84,6 +84,7 @@ const Header = () => {
               {data.map((product, i) =>
                 i < 9 &&  (
                   <PossibleProducts
+                    key={product.id}
                     thumbnail={product.thumbnail}
                     title={product.title}
                     id={product.id} 
