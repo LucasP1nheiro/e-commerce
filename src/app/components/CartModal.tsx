@@ -34,9 +34,9 @@ const CartModal = () => {
                         <CartProduct
                             key={product.id}
                             id={product.id}
-                            thumbnail={product.thumbnail}
+                            image={product.image}
                             title={product.title}
-                            price={Math.round(product?.price - product?.price * (product?.discountPercentage / 100))}
+                            price={product.price}
                         />
                     ))}
                     

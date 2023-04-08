@@ -3,13 +3,13 @@ import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai'
 import Link from 'next/link'
 
 interface CartProductProps {
-    thumbnail: string,
+    image: string,
     title: string,
     price: number,
     id: number
 }
 
-const CartProduct = ({ thumbnail, title, price, id }: CartProductProps) => {
+const CartProduct = ({ image, title, price, id }: CartProductProps) => {
     const [productCounter, setProductCounter] = useState(1)
     const [hoverTitle, setHoverTitle] = useState(false)
 
@@ -19,14 +19,14 @@ const CartProduct = ({ thumbnail, title, price, id }: CartProductProps) => {
 
     return (
     <div className="flex gap-4 py-3 border-b-gray-200 border-b-[1px]">
-        <img src={thumbnail} alt={`${title} Image`} className="h-24 w-1/4" />
+        <img src={image} alt={`${title} Image`} className="h-24 w-1/4" />
 
         <div className="flex flex-col justify-around w-1/2">
             <Link href={`/product/${id}`}>
                 <h1
                     onMouseEnter={() => setHoverTitle(true)}
                     onMouseLeave={() => setHoverTitle(false)}
-                    className={hoverTitle ? "w-fit border-b-2 border-b-black cursor-pointer" : "w-fit border-b-2 border-b-white"}
+                    className={hoverTitle ? "w-fit cursor-pointer underline" : "w-fit"}
                 >
                     {title}
                 </h1>

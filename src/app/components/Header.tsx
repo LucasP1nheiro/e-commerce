@@ -11,15 +11,14 @@ import logo from '../../../public/logo.svg'
 interface ProductsType {
   id: number,
   title: string,
-  description: string,
   price: number,
-  discountPercentage: number,
-  rating: number,
-  stock: number,
-  brand: string,
+  description: string,
   category: string,
-  thumbnail: string,
-  images: string[]
+  image: string,
+  rating: {
+    rate: number,
+    count: number
+  }
 }
 
 
@@ -35,20 +34,17 @@ const Header = () => {
     setSearch("")
   }
 
+  const handleFetch = async () => {
+    await axios.get('https://fakestoreapi.com/products')
+    .then(response => setData(response.data))
+  }
+
   const handleRedirect = (e: {key: string}) => {
     if (e.key === 'Enter' && search !== '') {
       setShouldRedirect(true)
     }
   }
 
-  const handleSearch = async () => {
-    if (search.length > 2) {
-      await axios.get(`https://dummyjson.com/products/search?q=${search}`)
-      .then(response => setData(response.data.products))
-    } else {
-      setData([])
-    }
-  }
 
   useEffect(() => {
     if (shouldRedirect) { 
@@ -60,9 +56,10 @@ const Header = () => {
 
   
   useEffect(() => {
-     handleSearch()
-  }, [search])
-
+    handleFetch()
+  }, [])
+  
+  console.log(data)
 
   return (
     <div className="w-screen h-[7vh] flex justify-between px-44 items-center fixed z-10 bg-white border-gray-200 border-2 top-0 left-0">
@@ -89,10 +86,10 @@ const Header = () => {
             </div>
             <div className="absolute top-14 w-1/3">
               {data.map((product, i) =>
-                i < 9 &&  (
+                search.length > 2 && product.title.toLowerCase().includes(search) && (
                   <PossibleProducts
                     key={product.id}
-                    thumbnail={product.thumbnail}
+                    image = {product.image}
                     title={product.title}
                     id={product.id} 
                     clearInput={clearInput}

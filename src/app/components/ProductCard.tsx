@@ -1,31 +1,26 @@
-import { AiFillStar } from 'react-icons/ai'
+
 import Link from 'next/link'
 
 type ProductsType = {  
     title: string,
     price: number,
-    brand: string,
-    thumbnail: string,
-    rating: number
-    id: number
+    image: string,
+    id: number,
+    category: string
 }
 
-const ProductCard = ( {title, price, thumbnail, brand, rating, id} : ProductsType) => {
+const ProductCard = ( {title, price, image, category, id} : ProductsType) => {
   return (
     <Link
-      className="border-[1px] p-2 w-1/5"
+      className="p-2 w-1/5 flex flex-col gap-2"
       href={`/product/${id}`}
     >
-      <img src={thumbnail} alt={`${title} Image`} className="h-56 w-full" />
-          <h1 className="font-bold">{title}</h1>
-          <p>{brand}</p>
+      <img src={image} alt={`${title} Image`} className="h-64 w-64 border-[1px] p-8" />
       <div className="flex justify-between">
-        <p className="text-xl text-blue-500 font-semibold">$ {price}</p>
-        <div className="flex items-center justify-center gap-2">
-          <AiFillStar fill={'orange'} />
-          <p className="text-xl text-blue-500 font-semibold"> {rating}</p>
-        </div>
+        <h1 className="font-bold text-md">{title}</h1>
+        <p className="text-md text-black font-bold">${price}</p>
       </div>
+      <h2 className="text-md capitalize">{category}</h2>
     </Link>
   )
 }

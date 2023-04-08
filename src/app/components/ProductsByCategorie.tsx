@@ -7,24 +7,24 @@ import ProductCard from './ProductCard'
 interface ProductsType {
     id: number,
     title: string,
-    description: string,
     price: number,
-    discountPercentage: number,
-    rating: number,
-    stock: number,
-    brand: string,
+    description: string,
     category: string,
-    thumbnail: string,
-    images: string[]
+    image: string,
+    rating: {
+      rate: number,
+      count: number
+    }
 }
 
 const ProductsByCategorie = ({ categorie }: { categorie: string }) => {
     
-    const [data, setData] = useState<ProductsType[]>([])
+    const [data, setData] = useState<ProductsType[] | null>([])
+    
 
     const handleFetch = async () => {
-        await axios.get(`https://dummyjson.com/products/category/${categorie}`) 
-        .then(response => setData(response.data.products))
+        await axios.get(`https://fakestoreapi.com/products/category/${categorie}`) 
+            .then(response => setData(response.data))
     }
     
     useEffect(() => {
@@ -34,10 +34,10 @@ const ProductsByCategorie = ({ categorie }: { categorie: string }) => {
 
   return (
       <div className="mt-10 w-5/6">
-          <h1 className="text-3xl mb-5">{categorie}</h1>
+          <h1 className="text-3xl mb-5 capitalize">{categorie}</h1>
           <div className="flex gap-4">
           {data?.map(product => (
-              <ProductCard title={product.title} brand={product.brand} thumbnail={product.thumbnail} price={product.price} rating={product.rating} id={product.id} key={product.id} />
+              <ProductCard title={product.title} category={product.category}  image={product.image} price={product.price}  id={product.id} key={product.id} />
           ))}
           </div>
       </div>

@@ -4,19 +4,19 @@ import axios from 'axios'
 import {usePathname} from 'next/navigation'
 import { useContext, useEffect, useState } from 'react'
 import {CartContext} from '../../context/CartContext'
+import Loading from '../../loading'
 
 interface ProductsType {
     id: number,
     title: string,
-    description: string,
     price: number,
-    discountPercentage: number,
-    rating: number,
-    stock: number,
-    brand: string,
+    description: string,
     category: string,
-    thumbnail: string,
-    images: string[]
+    image: string,
+    rating: {
+      rate: number,
+      count: number
+    }
 }
 
 const page = () => {
@@ -24,13 +24,15 @@ const page = () => {
     const path = usePathname()
     const id = path.replace('/product/', '')
     const [data, setData] = useState<ProductsType | null>(null)
-    const [activeImage, setActiveImage] = useState("a")
     const { cart, setCart } = useContext(CartContext)
     const [alreadyOnCart, setAlreadyOnCart] = useState(false)
+    const [isLoading, setIsLoading] = useState(true)
 
     const handleFetch = async () => {
-        await axios.get(`https://dummyjson.com/products/${id}`)
+        await axios.get(`https://fakestoreapi.com/products/${id}`)
         .then(response => setData(response.data))
+        
+        setIsLoading(false)
     }
 
     const addToCart = () => {
@@ -40,10 +42,6 @@ const page = () => {
     useEffect(() => {
         handleFetch()
     }, [])
-
-    useEffect(() => {
-        if (data !== null) setActiveImage(data.images[0])
-    }, [data])
 
     // This useEffect prevents the product from  being added two times on the cart
     useEffect(() => {
@@ -55,42 +53,35 @@ const page = () => {
     }, [cart, data])
 
   return (
-      <div className="h-screen w-screen flex justify-evenly items-center">
-          
-          <div className="flex items-center gap-8">
-            <div>
-                {data?.images.map(image => (
-                    <img
-                        key={image}
-                        src={image}
-                        alt={`${data.title} Image`}
-                        className="h-12 w-12 cursor-pointer py-2"
-                        onClick={() => setActiveImage(image)}
-                    />
-                ))}
+      <>
+          {isLoading && (
+              <div className="mt-20 w-screen h-screen flex justify-center">
+              <Loading/>
             </div>
-            <img src={activeImage} alt={`${data?.title} Image`} className="h-96 w-96"/>
+          )}
+          
+          {!isLoading && (
+            <div className="h-screen w-screen flex justify-around items-center">
+          
+              <img     
+              src={data?.image}
+              alt={`${data?.title} Image`}
+              className="h-80 w-80 cursor-pointer py-2"
+              />
+              <div className="flex flex-col gap-5 w-1/3">
+                    <h1 className="text-3xl font-semibold">{data?.title}</h1>
+                    <p>{data?.description}</p>
+                  <p className="text-xl text-black font-semibold"> ${data?.price},00</p>
+                  <button
+                      onClick={() => addToCart()}
+                      className="bg-black text-white uppercase p-5 w-1/3"
+                  >
+                      Add to cart
+                  </button>
+              </div>
           </div>
-          <div className="flex flex-col gap-5 w-1/3">
-              <h1 className="text-3xl font-semibold">{data?.title}</h1>
-              <p className="text-xl text-gray-500 font-semibold line-through"> ${data?.price},00</p>
-              {data?.price && data.discountPercentage && (
-                  <p className="text-xl text-blue-500 font-semibold">
-                     $ {Math.round(data?.price - data?.price * (data?.discountPercentage / 100))},00
-                  </p>
-              )}
-              <p>{data?.description}</p>
-              <p>{data?.brand}</p>
-              <button
-                  onClick={() => addToCart()}
-                  className="bg-blue-500 text-white uppercase p-5 w-1/3"
-              >
-                  Add to cart
-              </button>
-          </div>
-
-
-    </div>
+          )}
+      </>
   )
 }
 

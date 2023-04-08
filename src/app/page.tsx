@@ -14,7 +14,7 @@ export default function Home() {
   
   
   const handleFetch = async () => {
-   await axios.get('https://dummyjson.com/products/categories')
+   await axios.get('https://fakestoreapi.com/products/categories')
       .then(response => setCategories(response.data))
     
     setIsLoading(false)
