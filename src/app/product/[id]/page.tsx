@@ -25,7 +25,8 @@ const page = () => {
     const id = path.replace('/product/', '')
     const [data, setData] = useState<ProductsType | null>(null)
     const [activeImage, setActiveImage] = useState("a")
-    const {cart, setCart} = useContext(CartContext)
+    const { cart, setCart } = useContext(CartContext)
+    const [alreadyOnCart, setAlreadyOnCart] = useState(false)
 
     const handleFetch = async () => {
         await axios.get(`https://dummyjson.com/products/${id}`)
@@ -33,7 +34,7 @@ const page = () => {
     }
 
     const addToCart = () => {
-        if (data && !cart.includes(data)) setCart([...cart, data])
+        if (data && alreadyOnCart === false) setCart([...cart, data])
     }
 
     useEffect(() => {
@@ -44,7 +45,14 @@ const page = () => {
         if (data !== null) setActiveImage(data.images[0])
     }, [data])
 
-
+    // This useEffect prevents the product from  being added two times on the cart
+    useEffect(() => {
+        if (data) cart.map(product => {
+            if (product.id === data.id) {
+                setAlreadyOnCart(true)
+            }
+        })
+    }, [cart, data])
 
   return (
       <div className="h-screen w-screen flex justify-evenly items-center">
