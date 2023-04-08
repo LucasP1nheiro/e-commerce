@@ -1,4 +1,4 @@
-import { Inter } from 'next/font/google'
+import { Roboto } from 'next/font/google'
 import './globals.css'
 import Header from './components/Header'
 import CartModal from './components/CartModal'
@@ -10,7 +10,10 @@ export const metadata = {
   description: 'Fake e-commerce with dummyjson',
 }
 
-const inter = Inter({ subsets: ['latin'] })
+const roboto = Roboto({
+  weight: '400',
+  subsets: ['latin'],
+})
 
 export default function RootLayout({
   children,
@@ -23,7 +26,7 @@ export default function RootLayout({
     <CartContextProvider>
       <IsModalOpenContextProvider>
         <html lang="en">
-          <body className={"overflow-x-hidden " + inter.className}>
+          <body className={"overflow-x-hidden " + roboto.className}>
             <Header />
             {children}
             <CartModal />
