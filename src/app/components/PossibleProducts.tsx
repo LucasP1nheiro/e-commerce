@@ -11,13 +11,13 @@ const PossibleProducts = ({thumbnail, title, id, clearInput}: PossibleProductsPr
   return (
       <Link
           href={`/product/${id}`}
-          className="w-full flex bg-white gap-4 items-center overflow-x-hidden"
+          className="w-1/2 flex bg-white gap-4 items-center overflow-x-hidden border-gray-200 border-b-2"
           onClick={() => clearInput()}
       >
           <img
               src={thumbnail}
               alt={`${title} thumbnail`}
-              className="h-10"
+              className="h-14 w-14"
           />
           <p>{title}</p>
       </Link>

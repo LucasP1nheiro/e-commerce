@@ -5,6 +5,8 @@ import React, { useEffect, useState } from 'react'
 import PossibleProducts from './PossibleProducts'
 import Cart from './Cart'
 import Link from 'next/link'
+import { AiOutlineSearch } from 'react-icons/ai'
+import logo from '../../../public/logo.svg'
 
 interface ProductsType {
   id: number,
@@ -61,26 +63,31 @@ const Header = () => {
      handleSearch()
   }, [search])
 
-  
-
 
   return (
-    <div className="w-screen h-[7vh] flex justify-around items-center fixed z-10 bg-blue-500 top-0 left-0">
+    <div className="w-screen h-[7vh] flex justify-between px-44 items-center fixed z-10 bg-white border-gray-200 border-2 top-0 left-0">
     
       <Link href='/'>
-      <p>Header</p>
+        <img
+          src={logo.src}
+          alt="logo"
+          className="h-8"
+        />
       </Link>
-      <div className="flex gap-4 items-center">
-        <div className="flex flex-col">
-            <input
-              placeholder="Search product"
-              type="text"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              className="outline-none p-1 rounded-sm"
-              onKeyDown={(e) => handleRedirect(e)}
-            />
-            <div className="absolute top-14">
+      <div className="flex gap-4 items-center w-1/4 ">
+        <div className="flex flex-col w-full">
+          <div className="flex items-center gap-2 bg-white rounded-xl p-1 border-zinc-700 border-2">
+            <AiOutlineSearch size={'24px'} />
+              <input
+                placeholder="Search product"
+                type="text"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                className="outline-none"
+                onKeyDown={(e) => handleRedirect(e)}
+              />
+            </div>
+            <div className="absolute top-14 w-1/3">
               {data.map((product, i) =>
                 i < 9 &&  (
                   <PossibleProducts
