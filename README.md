@@ -28,7 +28,7 @@ http://localhost:3000/
 
 - View a list of products with images, descriptions, and prices 📦
 - Add products to your cart and view your cart 🛒
-- Make the checkout 💳
+- Complete the checkout process 💳
 - Access the product page to see more details 🔒
 - Search products 🔍
 
