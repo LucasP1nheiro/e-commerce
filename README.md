@@ -30,7 +30,7 @@ http://localhost:3000/
 - Add products to your cart and view your cart 🛒
 - Make the checkout 💳
 - Access the product page to see more details 🔒
-- Search products input 🔍
+- Search products 🔍
 
 ## Built with 🛠️
 
