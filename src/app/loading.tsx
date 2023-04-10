@@ -3,7 +3,7 @@ import {ClipLoader} from 'react-spinners'
 const Loading = () => {
   return (
     <>
-      <ClipLoader />
+      <ClipLoader color='#2D382A'/>
     </>
   )
 }

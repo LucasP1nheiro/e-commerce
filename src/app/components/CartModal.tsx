@@ -14,6 +14,8 @@ const CartModal = () => {
     const deleteCart = () => {
         setCart([])
     }
+
+    
     return (
         <>
         {isModalOpen && (
@@ -22,12 +24,14 @@ const CartModal = () => {
             onBlur={() => setIsModalOpen(false)}
             >
                 <div className="flex w-full justify-between items-center p-2 border-b-gray-200 border-b-[1px]">
-                    <h1 className="text-2xl ">Cart</h1>  
+                    <h1 className="text-2xl font-semibold uppercase">Your order</h1>  
                     <AiOutlineClose
                         size={'32px'}
                         className="cursor-pointer"
                         onClick={() => setIsModalOpen(!isModalOpen)}
+                        fill={'#2D382A'}    
                     />
+                    
                 </div>
                     
                     {cart.map(product => (
@@ -42,7 +46,7 @@ const CartModal = () => {
                     
                     <button
                         onClick={() => deleteCart()}
-                        className="p-4 bg-red-500"
+                        className="p-4 bg-darkGreen"
                     >
                         <RiDeleteBin5Line fill="white" />
                     </button>

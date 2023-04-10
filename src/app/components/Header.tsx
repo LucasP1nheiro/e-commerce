@@ -62,7 +62,7 @@ const Header = () => {
   console.log(data)
 
   return (
-    <div className="w-screen h-[7vh] flex justify-between px-44 items-center fixed z-10 bg-white border-gray-200 border-2 top-0 left-0">
+    <div className="w-screen h-[7vh] flex justify-between px-44 items-center fixed z-10 bg-white border-b-darkGreen border-2 top-0 left-0">
     
       <Link href='/'>
         <img
@@ -73,8 +73,8 @@ const Header = () => {
       </Link>
       <div className="flex gap-4 items-center w-1/4 ">
         <div className="flex flex-col w-full">
-          <div className="flex items-center gap-2 bg-white rounded-xl p-1 border-zinc-700 border-2">
-            <AiOutlineSearch size={'24px'} />
+          <div className="flex items-center gap-2 bg-white rounded-xl p-1 border-darkGreen border-2">
+            <AiOutlineSearch size={'24px'} fill='#2D382A'/>
               <input
                 placeholder="Search product"
                 type="text"
@@ -86,7 +86,7 @@ const Header = () => {
             </div>
             <div className="absolute top-14 w-1/3">
               {data.map((product, i) =>
-                search.length > 2 && product.title.toLowerCase().includes(search) && (
+               i < 5 && search.length > 2 && product.title.toLowerCase().includes(search) && (
                   <PossibleProducts
                     key={product.id}
                     image = {product.image}

@@ -50,6 +50,7 @@ const page = () => {
                 setAlreadyOnCart(true)
             }
         })
+        if (cart.length === 0) setAlreadyOnCart(false)
     }, [cart, data])
 
   return (
@@ -69,12 +70,12 @@ const page = () => {
               className="h-80 w-80 cursor-pointer py-2"
               />
               <div className="flex flex-col gap-5 w-1/3">
-                    <h1 className="text-3xl font-semibold">{data?.title}</h1>
+                    <h1 className="text-3xl text-darkGreen font-semibold">{data?.title}</h1>
                     <p>{data?.description}</p>
                   <p className="text-xl text-black font-semibold"> ${data?.price},00</p>
                   <button
                       onClick={() => addToCart()}
-                      className="bg-black text-white uppercase p-5 w-1/3"
+                      className="bg-darkGreen text-white uppercase p-5 w-1/3"
                   >
                       Add to cart
                   </button>

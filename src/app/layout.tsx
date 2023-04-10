@@ -4,6 +4,8 @@ import Header from './components/Header'
 import CartModal from './components/CartModal'
 import IsModalOpenContextProvider from './context/IsModalOpenContext'
 import CartContextProvider from './context/CartContext'
+import logo from '../../public/logo.svg'
+import Head from 'next/head'
 
 export const metadata = {
   title: 'E-commerce',
@@ -26,6 +28,9 @@ export default function RootLayout({
     <CartContextProvider>
       <IsModalOpenContextProvider>
         <html lang="en">
+          <Head>
+            <link rel="shortcut icon" href='/logo.svg' />
+          </Head>
           <body className={"overflow-x-hidden " + roboto.className}>
             <Header />
             {children}

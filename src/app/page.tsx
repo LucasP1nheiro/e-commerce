@@ -36,7 +36,7 @@ export default function Home() {
       )}
 
       {!isLoading && (
-        <main className=" bottom-0  w-screen  mt-16 pb-16 flex flex-col items-center " >
+        <main className="min-h-screen  w-screen  my-16 pb-32 flex flex-col items-center" >
         {categories?.map(categorie => (
           <ProductsByCategorie key={categorie} categorie={categorie}/>
         ))}
