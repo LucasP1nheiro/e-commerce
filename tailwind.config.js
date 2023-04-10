@@ -5,15 +5,15 @@ module.exports = {
     extend: {
       backgroundColor: {
         'darkGreen': '#2D382A',
-        'lilac': '#F8F6F5'
+        'offWhite': '#F8F6F5'
       },
       textColor: {
         'darkGreen': '#2D382A',
-        'lilac': '#F8F6F5'
+        'offWhite': '#F8F6F5'
       },
       borderColor: {
         'darkGreen': '#2D382A',
-        'lilac': '#F8F6F5'
+        'offWhite': '#F8F6F5'
       },
       
       

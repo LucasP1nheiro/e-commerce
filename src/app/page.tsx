@@ -2,16 +2,16 @@
 
 import ProductsByCategorie from './components/ProductsByCategorie'
 import axios from 'axios'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import Loading from './loading'
 import Header from './components/Header'
+import { IsModalOpenContext } from './context/IsModalOpenContext'
 
 
 export default function Home() {
   const [categories, setCategories] = useState([])
   const [isLoading, setIsLoading] = useState(true)
-  
-  
+ 
   
   const handleFetch = async () => {
    await axios.get('https://fakestoreapi.com/products/categories')
@@ -36,7 +36,7 @@ export default function Home() {
       )}
 
       {!isLoading && (
-        <main className="min-h-screen  w-screen  my-16 pb-32 flex flex-col items-center" >
+      <main className="min-h-screen  w-screen  my-16 pb-32 flex flex-col items-center"  >
         {categories?.map(categorie => (
           <ProductsByCategorie key={categorie} categorie={categorie}/>
         ))}
