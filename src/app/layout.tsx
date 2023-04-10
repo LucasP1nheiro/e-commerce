@@ -5,10 +5,10 @@ import CartModal from './components/CartModal'
 import IsModalOpenContextProvider from './context/IsModalOpenContext'
 import CartContextProvider from './context/CartContext'
 import logo from '../../public/logo.svg'
-import Head from 'next/head'
+
 
 export const metadata = {
-  title: 'E-commerce',
+  title: 'ShopEase',
   description: 'Fake e-commerce with dummyjson',
 }
 
@@ -28,9 +28,9 @@ export default function RootLayout({
     <CartContextProvider>
       <IsModalOpenContextProvider>
         <html lang="en">
-          <Head>
+          <head>
             <link rel="shortcut icon" href='/logo.svg' />
-          </Head>
+          </head>
           <body className={"overflow-x-hidden " + roboto.className}>
             <Header />
             {children}
