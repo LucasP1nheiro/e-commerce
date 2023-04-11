@@ -6,17 +6,17 @@
 
 1. Clone the repository
 
-git clone https://github.com/LucasP1nheiro/e-commerce.git
+```git clone https://github.com/LucasP1nheiro/e-commerce.git```
 
 
 2. Install dependencies
 
-npm install
+```npm install```
 
 
 3. Start the development server
 
-npm run dev
+```npm run dev```
 
 
 4. Open the app in your browser
