@@ -18,7 +18,7 @@ const ProductCard = ( {title, price, image, category, id} : ProductsType) => {
       <img src={image} alt={`${title} Image`} className="h-72 border-[1px] p-16" />
       <h2 className="text-md capitalize text-gray-500">{category}</h2>
       <h1 className="font-bold text-md w-3/4">{title}</h1>
-      <p className="text-md text-darkGreen font-bold">${price},00</p>
+      <p className="text-md text-darkGreen font-bold">${price}</p>
       
     </Link>
   )
