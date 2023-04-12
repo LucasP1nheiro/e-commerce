@@ -4,13 +4,15 @@ import { BsArrowRight } from 'react-icons/bs'
 import {RiDeleteBin5Line} from 'react-icons/ri'
 import { IsModalOpenContext } from '../context/IsModalOpenContext'
 import { useContext, useState } from 'react'
-import {CartContext} from '../context/CartContext'
+import { CartContext } from '../context/CartContext'
+import {motion, AnimatePresence} from 'framer-motion'
 import CartProduct from './CartProduct'
 
 const CartModal = () => {
     const {isModalOpen, setIsModalOpen} = useContext(IsModalOpenContext)
     const { cart, setCart } = useContext(CartContext)
     const [totalPrice, setTotalPrice] = useState(0)
+
 
     const deleteCart = () => {
         setCart([])
@@ -19,24 +21,28 @@ const CartModal = () => {
 
     const handleTotalPrice = (price: number) => {
         setTotalPrice(totalPrice + price)
-
-        console.log(price, totalPrice)
     }
 
     
+    
     return (
         <>
+        <AnimatePresence>
         {isModalOpen && (
-            <div
-            className="w-1/3 h-screen fixed right-0 top-0 bg-white z-20 p-8 shadow-lg shadow-black flex flex-col items-center justify-around"
-            onBlur={() => setIsModalOpen(false)}
+            <motion.div
+                    initial={{ x: '100vw' }}
+                    animate={{ x: 0 }}
+                    transition={{ duration: 0.7 }}
+                    exit={{ x: '100vw' }}
+                    className="w-1/3 h-screen fixed right-0 top-0 bg-white z-20 p-8 shadow-lg shadow-black flex flex-col items-center justify-around"
+                    
             >
                 <div className="flex h-[10%] w-full justify-between items-center p-2">
                     <h1 className="text-2xl font-semibold uppercase">Your order</h1>  
                     <BsArrowRight
                         size={'32px'}
                         className="cursor-pointer"
-                        onClick={() => setIsModalOpen(!isModalOpen)}
+                        onClick={() => setIsModalOpen(false)}
                         fill={'#2D382A'}    
                     />
                     
@@ -73,8 +79,9 @@ const CartModal = () => {
                             Checkout
                         </button>
                     </div>
-            </div>
+            </motion.div>
         )}
+        </AnimatePresence>
         </>
     )
 }
