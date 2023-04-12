@@ -39,7 +39,7 @@ const ProductsByCategorie = ({ categorie }: { categorie: string }) => {
           <h1 className="text-3xl mb-5 capitalize ml-24 text-darkGreen">{categorie}</h1>
           <Carousel
               slideSize="34%"
-              slideGap="lg"
+              slideGap="sm"
               containScroll="trimSnaps"
               align="start" 
               controlsOffset="xs"
@@ -57,7 +57,7 @@ const ProductsByCategorie = ({ categorie }: { categorie: string }) => {
           >
           {data?.map(product => (
               <Carousel.Slide>
-                  <ProductCard title={product.title} category={product.category}  image={product.image} price={product.price}  id={product.id} key={product.id} />
+                  <ProductCard data={product}/>
               </Carousel.Slide>
           ))}
           </Carousel>
