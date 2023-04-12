@@ -85,8 +85,8 @@ const Header = () => {
               />
             </div>
             <div className="absolute top-14 w-1/3">
-              {data.map((product, i) =>
-               i < 5 && search.length > 2 && product.title.toLowerCase().includes(search) && (
+              {data.map((product) =>
+                search.length > 2 && product.title.toLowerCase().includes(search.toLocaleLowerCase( )) && (
                   <PossibleProducts
                     key={product.id}
                     image = {product.image}
