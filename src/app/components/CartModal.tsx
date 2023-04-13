@@ -7,11 +7,12 @@ import { useContext, useState } from 'react'
 import { CartContext } from '../context/CartContext'
 import {motion, AnimatePresence} from 'framer-motion'
 import CartProduct from './CartProduct'
+import {TotalPriceContext} from '../context/TotalPriceContext'
 
 const CartModal = () => {
     const {isModalOpen, setIsModalOpen} = useContext(IsModalOpenContext)
     const { cart, setCart } = useContext(CartContext)
-    const [totalPrice, setTotalPrice] = useState(0)
+    const { totalPrice, setTotalPrice } = useContext(TotalPriceContext)
 
 
     const deleteCart = () => {
@@ -20,10 +21,9 @@ const CartModal = () => {
     }
 
     const handleTotalPrice = (price: number) => {
-        setTotalPrice(totalPrice + price)
+        setTotalPrice(totalPrice + price);
     }
 
-    
     
     return (
         <>
@@ -48,7 +48,7 @@ const CartModal = () => {
                 </div>
                     
                     <main className="h-[70%] w-full border-b-darkGreen border-b-[1px] overflow-scroll">
-                        {cart.map(product => (
+                        {cart.map((product, i) => (
                             <CartProduct
                                 key={product.id}
                                 id={product.id}

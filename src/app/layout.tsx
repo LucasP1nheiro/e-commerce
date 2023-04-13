@@ -4,6 +4,7 @@ import Header from './components/Header'
 import CartModal from './components/CartModal'
 import IsModalOpenContextProvider from './context/IsModalOpenContext'
 import CartContextProvider from './context/CartContext'
+import TotalPriceContextProvider from './context/TotalPriceContext'
 import logo from '../../public/logo.svg'
 
 
@@ -25,7 +26,8 @@ export default function RootLayout({
   
     
   return (
-    <CartContextProvider>
+    <TotalPriceContextProvider>
+      <CartContextProvider>
       <IsModalOpenContextProvider>
         <html lang="en">
           <head>
@@ -39,5 +41,6 @@ export default function RootLayout({
         </html>
       </IsModalOpenContextProvider>
     </CartContextProvider>
+    </TotalPriceContextProvider>
   )
 }

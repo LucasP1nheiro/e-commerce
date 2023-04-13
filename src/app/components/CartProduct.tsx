@@ -1,46 +1,43 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useCallback, useContext, useEffect, useState } from 'react'
 import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai'
 import { AiOutlineClose } from 'react-icons/ai'
 import Link from 'next/link'
 import {CartContext} from '../context/CartContext'
+import {TotalPriceContext} from '../context/TotalPriceContext'
 
 interface CartProductProps {
     image: string,
     title: string,
     price: number,
     id: number,
-    handleTotalPrice: (price: number) => void
 }
 
-const CartProduct = ({ image, title, price, id, handleTotalPrice }: CartProductProps) => {
+const CartProduct = ({ image, title, price, id }: CartProductProps) => {
     const [productCounter, setProductCounter] = useState(1)
     const [hoverTitle, setHoverTitle] = useState(false)
     const { cart, setCart } = useContext(CartContext)
-
-    const decreaseOneProduct = () => {
-        if (productCounter > 1) {
-            setProductCounter(productCounter - 1)
-            handleTotalPrice(-price)
-        }    
-    }
-
-    const increaseOneProduct = () => { 
-        setProductCounter(productCounter + 1)
-        handleTotalPrice(price)
-    }
+    const { totalPrice, setTotalPrice } = useContext(TotalPriceContext)
 
     const deleteProduct = () => {
         cart.map(product => {
             if (product.id === id) {
                 setCart(cart.filter(item => item.id !== id))
-                handleTotalPrice(-price * productCounter)
+                setTotalPrice(totalPrice - (price * productCounter))
             }   
         })
-     }
+    }
 
-    useEffect(() => {
-        handleTotalPrice(price)
-    }, [])
+    const increaseProductCounter = () => {
+        setProductCounter(productCounter + 1)
+        setTotalPrice(totalPrice + price)
+    }
+
+    const decreaseProductCounter = () => {
+        if (productCounter > 1) {
+            setProductCounter(productCounter - 1)
+            setTotalPrice(totalPrice - price)
+        }
+    }
 
 
     return (
@@ -73,13 +70,13 @@ const CartProduct = ({ image, title, price, id, handleTotalPrice }: CartProductP
                 <div className="flex gap-4 border-gray-200 border-y-[1px]">
                     <AiOutlineMinus
                         className="border-gray-200 border-x-[1px] cursor-pointer p-1"
-                        onClick={() => decreaseOneProduct()}
+                        onClick={() => decreaseProductCounter()}
                         size={'30px'}
                     />
                     <p className="text-lg text-black">{productCounter}</p>
                     <AiOutlinePlus
                         className="border-gray-200 border-x-[1px] cursor-pointer p-1"
-                        onClick={() => increaseOneProduct()}
+                        onClick={() => increaseProductCounter()}
                         size={'30px'}
                     />
                 </div>

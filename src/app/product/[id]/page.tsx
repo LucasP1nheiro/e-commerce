@@ -5,6 +5,7 @@ import {usePathname} from 'next/navigation'
 import { useContext, useEffect, useState } from 'react'
 import {CartContext} from '../../context/CartContext'
 import Loading from '../../loading'
+import {TotalPriceContext} from '../../context/TotalPriceContext'
 
 interface ProductsType {
     id: number,
@@ -27,6 +28,7 @@ const page = () => {
     const { cart, setCart } = useContext(CartContext)
     const [alreadyOnCart, setAlreadyOnCart] = useState(false)
     const [isLoading, setIsLoading] = useState(true)
+    const { totalPrice, setTotalPrice } = useContext(TotalPriceContext)
 
     const handleFetch = async () => {
         await axios.get(`https://fakestoreapi.com/products/${id}`)
@@ -36,9 +38,12 @@ const page = () => {
     }
 
     const addToCart = () => {
-        if (data && alreadyOnCart === false) setCart([...cart, data])
+        if (data && alreadyOnCart === false) {
+          setCart([...cart, data])
+          setTotalPrice(totalPrice + data.price)
+        }
     }
-
+    
     useEffect(() => {
         handleFetch()
     }, [])

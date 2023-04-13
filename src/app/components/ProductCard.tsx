@@ -6,6 +6,7 @@ import {AiOutlineEye} from 'react-icons/ai'
 import {motion, AnimatePresence} from 'framer-motion'
 import { CartContext } from '../context/CartContext'
 import {useRouter} from 'next/navigation'
+import { TotalPriceContext } from '../context/TotalPriceContext'
 
 interface ProductsType {
   id: number,
@@ -28,7 +29,8 @@ const ProductCard = ({data}: ProductCardProps) => {
   const [hover, setHover] = useState(false)
   const { cart, setCart } = useContext(CartContext)
   const [alreadyOnCart, setAlreadyOnCart] = useState(false)
-  const {push} = useRouter()
+  const { push } = useRouter()
+  const { totalPrice, setTotalPrice } = useContext(TotalPriceContext)
 
   // This useEffect prevents the product from  being added two times on the cart
   useEffect(() => {
@@ -41,7 +43,10 @@ const ProductCard = ({data}: ProductCardProps) => {
 }, [cart, data])
 
   const addToCart = () => {
-    if (data && alreadyOnCart === false) setCart([...cart, data])
+    if (data && alreadyOnCart === false) {
+      setCart([...cart, data])
+      setTotalPrice(totalPrice + data.price)
+    }
   }
 
   const handleRedirect = () => {

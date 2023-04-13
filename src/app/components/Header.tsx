@@ -59,7 +59,6 @@ const Header = () => {
     handleFetch()
   }, [])
   
-  console.log(data)
 
   return (
     <div className="w-screen h-[7vh] flex justify-between px-44 items-center fixed z-10 bg-white border-b-darkGreen border-2 top-0 left-0">
