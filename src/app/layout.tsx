@@ -5,7 +5,8 @@ import CartModal from './components/CartModal'
 import IsModalOpenContextProvider from './context/IsModalOpenContext'
 import CartContextProvider from './context/CartContext'
 import TotalPriceContextProvider from './context/TotalPriceContext'
-import logo from '../../public/logo.svg'
+import HasCheckedOutContextProvider from './context/HasCheckedOut'
+import Checkout from './components/Checkout'
 
 
 export const metadata = {
@@ -26,21 +27,24 @@ export default function RootLayout({
   
     
   return (
-    <TotalPriceContextProvider>
-      <CartContextProvider>
-      <IsModalOpenContextProvider>
-        <html lang="en">
-          <head>
-            <link rel="shortcut icon" href='/logo.svg' />
-          </head>
-          <body className={"overflow-x-hidden " + roboto.className}>
-            <Header />
-            {children}
-            <CartModal />
-          </body>
-        </html>
-      </IsModalOpenContextProvider>
-    </CartContextProvider>
-    </TotalPriceContextProvider>
+    <HasCheckedOutContextProvider>
+        <TotalPriceContextProvider>
+          <CartContextProvider>
+            <IsModalOpenContextProvider>
+              <html lang="en">
+                <head>
+                  <link rel="shortcut icon" href='/logo.svg' />
+                </head>
+                <body className={"overflow-x-hidden " + roboto.className}>
+                  <Header />
+                  {children}
+                  <CartModal />
+                  <Checkout /> 
+                </body>
+              </html>
+            </IsModalOpenContextProvider>
+        </CartContextProvider>
+      </TotalPriceContextProvider>
+    </HasCheckedOutContextProvider>
   )
 }

@@ -8,11 +8,13 @@ import { CartContext } from '../context/CartContext'
 import {motion, AnimatePresence} from 'framer-motion'
 import CartProduct from './CartProduct'
 import {TotalPriceContext} from '../context/TotalPriceContext'
+import { HasCheckedOutContext } from '../context/HasCheckedOut'
 
 const CartModal = () => {
     const {isModalOpen, setIsModalOpen} = useContext(IsModalOpenContext)
     const { cart, setCart } = useContext(CartContext)
     const { totalPrice, setTotalPrice } = useContext(TotalPriceContext)
+    const {setHasCheckedOut} = useContext(HasCheckedOutContext)
 
 
     const deleteCart = () => {
@@ -20,10 +22,12 @@ const CartModal = () => {
         setTotalPrice(0)
     }
 
-    const handleTotalPrice = (price: number) => {
-        setTotalPrice(totalPrice + price);
+    const handleCheckout = () => {
+        setHasCheckedOut(true)
+        setIsModalOpen(false)
     }
 
+   
     
     return (
         <>
@@ -55,7 +59,6 @@ const CartModal = () => {
                                 image={product.image}
                                 title={product.title}
                                 price={product.price}
-                                handleTotalPrice={handleTotalPrice}
                             />
                         ))}
                     </main>
@@ -73,7 +76,9 @@ const CartModal = () => {
                         </div>
 
                         <button
-                            className="bg-darkGreen text-white w-full py-4"
+                                className="bg-darkGreen text-white w-full py-4"
+                                onClick={() => handleCheckout()}
+                                disabled={cart.length === 0}
                         >
                             Checkout
                         </button>
