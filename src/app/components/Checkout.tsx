@@ -4,9 +4,16 @@ import React, { useContext } from 'react'
 import { HasCheckedOutContext } from '../context/HasCheckedOut'
 import Check from './Check'
 import { AiOutlineClose } from 'react-icons/ai'
+import {CartContext} from '../context/CartContext'
 
 const Checkout = () => {
-  const {hasCheckedOut, setHasCheckedOut} = useContext(HasCheckedOutContext)
+  const { hasCheckedOut, setHasCheckedOut } = useContext(HasCheckedOutContext)
+  const {setCart} = useContext(CartContext)
+  
+  const closeModal = () => {
+    setHasCheckedOut(false)
+    setCart([])
+  }
 
   return (
       <>
@@ -18,11 +25,11 @@ const Checkout = () => {
                         size={'64px'}                
                         className="cursor-pointer"
                         fill={'#ffffff'}
-                        onClick={() => setHasCheckedOut(false)}
+                        onClick={() => closeModal()}
                     /> 
                   </div>
                   <Check />
-                <h1 className="text-white text-2xl font-semibold">Thank you for your purchase! Your order has been confirmed.</h1>
+                <p className="text-white text-2xl font-semibold">Thank you for your purchase! Your order has been confirmed.</p>
             </div>
         </div>
         )}
