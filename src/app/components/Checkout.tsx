@@ -5,14 +5,17 @@ import { HasCheckedOutContext } from '../context/HasCheckedOut'
 import Check from './Check'
 import { AiOutlineClose } from 'react-icons/ai'
 import {CartContext} from '../context/CartContext'
+import { TotalPriceContext } from '../context/TotalPriceContext'
 
 const Checkout = () => {
   const { hasCheckedOut, setHasCheckedOut } = useContext(HasCheckedOutContext)
-  const {setCart} = useContext(CartContext)
+  const { setCart } = useContext(CartContext)
+  const {setTotalPrice} = useContext(TotalPriceContext)
   
   const closeModal = () => {
     setHasCheckedOut(false)
     setCart([])
+    setTotalPrice(0)
   }
 
   return (

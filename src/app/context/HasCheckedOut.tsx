@@ -17,7 +17,7 @@ export const HasCheckedOutContext = createContext<HasCheckedOutContext>({
 })
 
 export default function HasCheckedOutContextProvider({ children }: HasCheckedOutContextProviderProps) {
-    const [hasCheckedOut, setHasCheckedOut] = useState(true)
+    const [hasCheckedOut, setHasCheckedOut] = useState(false)
 
     return (
         <HasCheckedOutContext.Provider value={{hasCheckedOut, setHasCheckedOut}}>
