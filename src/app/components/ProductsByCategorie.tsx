@@ -35,8 +35,7 @@ const ProductsByCategorie = ({ categorie }: { categorie: string }) => {
     
 
   return (
-      <div className="mt-10 w-3/5">
-          <h1 className="text-3xl mb-5 capitalize ml-24 text-darkGreen">{categorie}</h1>
+      <div className="mt-10 w-full">
           <Carousel
               slideSize="34%"
               slideGap="sm"

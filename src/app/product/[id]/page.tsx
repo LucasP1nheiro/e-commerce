@@ -6,6 +6,7 @@ import { useContext, useEffect, useState } from 'react'
 import {CartContext} from '../../context/CartContext'
 import Loading from '../../loading'
 import {TotalPriceContext} from '../../context/TotalPriceContext'
+import ProductsByCategorie from '../../components/ProductsByCategorie'
 
 interface ProductsType {
     id: number,
@@ -67,24 +68,31 @@ const page = () => {
           )}
           
           {!isLoading && (
-            <div className="h-screen w-screen flex justify-around items-center">
+            <div className="min-h-screen w-screen flex flex-col items-center py-12">
           
-              <img     
-              src={data?.image}
-              alt={`${data?.title} Image`}
-              className="h-80 w-80 cursor-pointer py-2"
-              />
-              <div className="flex flex-col gap-5 w-1/3">
-                    <h1 className="text-3xl text-darkGreen font-semibold">{data?.title}</h1>
-                    <p>{data?.description}</p>
-                  <p className="text-xl text-black font-semibold"> ${data?.price},00</p>
-                  <button
-                      onClick={() => addToCart()}
-                      className="bg-darkGreen text-white uppercase p-5 w-1/3"
-                  >
-                      Add to cart
-                  </button>
+              <div className="h-screen w-screen flex justify-around items-center">
+                <img     
+                src={data?.image}
+                alt={`${data?.title} Image`}
+                className="h-80 w-80 cursor-pointer py-2"
+                />
+                <div className="flex flex-col gap-5 w-1/3">
+                        <h1 className="text-3xl text-darkGreen font-semibold">{data?.title}</h1>
+                        <p>{data?.description}</p>
+                    <p className="text-xl text-black font-semibold"> ${data?.price}</p>
+                    <button
+                        onClick={() => addToCart()}
+                        className="bg-darkGreen text-white uppercase p-5 w-1/3"
+                    >
+                        Add to cart
+                    </button>
+                </div>
               </div>
+                  
+                <div className="flex flex-col w-3/5">
+                    <h1 className="text-5xl capitalize text-darkGreen ml-24">Similar Products</h1>
+                    {data && <ProductsByCategorie categorie={data?.category} />} 
+                </div>
           </div>
           )}
       </>

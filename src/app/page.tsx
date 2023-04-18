@@ -36,9 +36,12 @@ export default function Home() {
       )}
 
       {!isLoading && (
-      <main className="min-h-screen  w-screen  my-16 pb-32 flex flex-col items-center"  >
-        {categories?.map(categorie => (
-          <ProductsByCategorie key={categorie} categorie={categorie}/>
+      <main className="min-h-screen  w-screen  my-16 py-32 flex flex-col items-center gap-12"  >
+          {categories?.map(categorie => (
+            <div className="flex flex-col w-3/5">
+              <h1 className="text-3xl mb-5 uppercase ml-24 text-darkGreen">{categorie}</h1>
+              <ProductsByCategorie key={categorie} categorie={categorie}/>
+            </div>
         ))}
       </main>
       )}
