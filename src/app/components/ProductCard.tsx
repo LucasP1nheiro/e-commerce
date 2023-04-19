@@ -55,7 +55,7 @@ const ProductCard = ({data}: ProductCardProps) => {
 
   return (
     <div
-      className="p-2  flex flex-col gap-2"
+      className="p-2 flex flex-col gap-2 w-[311px]"
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
     >
