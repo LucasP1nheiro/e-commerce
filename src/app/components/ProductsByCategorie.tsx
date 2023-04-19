@@ -37,7 +37,7 @@ const ProductsByCategorie = ({ categorie }: { categorie: string }) => {
   return (
       <div className="mt-10 w-full">
           <Carousel
-              slideSize="34%"
+              slideSize="25%"
               slideGap="sm"
               containScroll="trimSnaps"
               align="start" 
@@ -50,7 +50,7 @@ const ProductsByCategorie = ({ categorie }: { categorie: string }) => {
               }}
               previousControlIcon={hover && (<div><AiOutlineLeft size={32} fill={'#2D382A'} /></div>)}
               nextControlIcon={hover && (<div><AiOutlineRight size={32} fill={'#2D382A'} /></div>)}
-              className="flex  w-full overflow-x-hidden gap-3 md:px-20 px-10"
+              className="flex   w-full overflow-x-hidden gap-3 md:px-20 px-10"
               onMouseEnter={() => setHover(true)}
               onMouseLeave={() => setHover(false)}
           >
