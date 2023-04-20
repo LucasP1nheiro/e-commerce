@@ -61,7 +61,7 @@ const Header = () => {
   
 
   return (
-    <div className="w-screen h-[7vh] flex justify-between px-44 items-center fixed z-10 bg-white border-b-darkGreen border-2 top-0 left-0">
+    <div className="w-screen h-[7vh] flex justify-between px-44 items-center fixed z-10 bg-white border-b-strongRed border-2 top-0 left-0">
     
       <Link href='/'>
         <img
@@ -72,7 +72,7 @@ const Header = () => {
       </Link>
       <div className="flex gap-4 items-center w-1/4 ">
         <div className="flex flex-col w-full">
-          <div className="flex items-center gap-2 bg-white rounded-xl p-1 border-darkGreen border-2">
+          <div className="flex items-center gap-2 bg-white rounded-xl p-1 border-strongRed border-2">
             <AiOutlineSearch size={'24px'} fill='#990011FF'/>
               <input
                 placeholder="Search product"
