@@ -64,7 +64,7 @@ const ProductCard = ({data}: ProductCardProps) => {
     >
       
       <Link
-        href={`/products/${data.id}`}
+        href={`/product/${data.id}`}
         className="flex flex-col gap-2"
       >
         <img src={data.image} alt={`${data.title} Image`} className="h-72 p-20" />
