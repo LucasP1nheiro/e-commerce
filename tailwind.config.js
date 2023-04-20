@@ -4,16 +4,13 @@ module.exports = {
   theme: {
     extend: {
       backgroundColor: {
-        'darkGreen': '#2D382A',
-        'offWhite': '#F8F6F5'
+        'strongRed': '#990011FF'
       },
       textColor: {
-        'darkGreen': '#2D382A',
-        'offWhite': '#F8F6F5'
+        'strongRed': '#990011FF'
       },
       borderColor: {
-        'darkGreen': '#2D382A',
-        'offWhite': '#F8F6F5'
+        'strongRed': '#990011FF'
       },
       
       

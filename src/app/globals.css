@@ -8,6 +8,10 @@
   }
   
   ::-webkit-scrollbar-thumb {
-    background-color: #2D382A;
+    background-color: #990011FF;
     border-radius: 16px;
+  }
+
+  html {
+    scroll-behavior: smooth;
   }

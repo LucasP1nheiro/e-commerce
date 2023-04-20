@@ -57,7 +57,7 @@ const page = () => {
     
           <div className="w-5/6 flex gap-10 flex-wrap items-center ">
           {data?.map(product => search && product.title.toLowerCase().includes(search) && (
-            <ProductCard key={product.id} title={product.title} price={product.price} image={product.image} category={product.category}  id={product.id} />
+            <ProductCard data={product} />
           ))}
           </div>
 

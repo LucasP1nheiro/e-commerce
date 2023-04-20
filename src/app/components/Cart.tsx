@@ -18,8 +18,8 @@ const Cart = () => {
           onClick={() => setIsModalOpen(true)}
           className='flex items-center justify-center text-center cursor-pointer'
       >
-          <AiOutlineShoppingCart size={32} fill='#2D382A' />
-          <p className="bg-darkGreen h-8 w-8 p-[6px] rounded-full text-white text-sm relative right-2 bottom-4 z-50">
+          <AiOutlineShoppingCart size={32} fill='#990011FF' />
+          <p className="bg-strongRed h-8 w-8 p-[6px] rounded-full text-white text-sm relative right-2 bottom-4 z-50">
               {handleCartSize()}
           </p>
       </div>

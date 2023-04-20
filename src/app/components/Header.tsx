@@ -73,7 +73,7 @@ const Header = () => {
       <div className="flex gap-4 items-center w-1/4 ">
         <div className="flex flex-col w-full">
           <div className="flex items-center gap-2 bg-white rounded-xl p-1 border-darkGreen border-2">
-            <AiOutlineSearch size={'24px'} fill='#2D382A'/>
+            <AiOutlineSearch size={'24px'} fill='#990011FF'/>
               <input
                 placeholder="Search product"
                 type="text"

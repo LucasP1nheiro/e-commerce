@@ -63,15 +63,17 @@ const ProductCard = ({data}: ProductCardProps) => {
       onMouseLeave={() => setHover(false)}
     >
       
-      <Link
+      {data && (
+        <Link
         href={`/product/${data.id}`}
         className="flex flex-col gap-2"
       >
         <img src={data.image} alt={`${data.title} Image`} className="h-72 p-20" />
         <h2 className="text-md capitalize text-gray-500">{data.category}</h2>
         <h1 className="font-bold text-md h-12">{limitStringLength(data.title)}</h1>
-        <p className="text-2xl text-darkGreen font-bold">${data.price}</p>
+        <p className="text-2xl text-strongRed font-bold">${data.price}</p>
       </Link>
+      )}
       
       <AnimatePresence>
 
@@ -83,7 +85,7 @@ const ProductCard = ({data}: ProductCardProps) => {
             transition={{ duration: 0.3}}
             exit={{  opacity: 0 }}
             onClick={() => addToCart()}
-            className="flex justify-center items-center gap-4 w-full  p-2 bg-darkGreen"
+            className="flex justify-center items-center gap-4 w-full  p-2 bg-strongRed"
             >
               
               <BsCartPlus fill="white" size={32} />

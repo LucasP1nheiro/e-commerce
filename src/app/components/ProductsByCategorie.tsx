@@ -48,9 +48,9 @@ const ProductsByCategorie = ({ categorie }: { categorie: string }) => {
                      border: 0
                   }
               }}
-              previousControlIcon={hover && (<div><AiOutlineLeft size={32} fill={'#2D382A'} /></div>)}
-              nextControlIcon={hover && (<div><AiOutlineRight size={32} fill={'#2D382A'} /></div>)}
-              className="flex   w-full overflow-x-hidden gap-3 md:px-20 px-10"
+              previousControlIcon={hover && (<div><AiOutlineLeft size={32} fill={'#990011FF'} /></div>)}
+              nextControlIcon={hover && (<div><AiOutlineRight size={32} fill={'#990011FF'} /></div>)}
+              className="flex   w-full overflow-x-hidden gap-3 md:px-20 px-5"
               onMouseEnter={() => setHover(true)}
               onMouseLeave={() => setHover(false)}
           >

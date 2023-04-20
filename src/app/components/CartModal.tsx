@@ -46,12 +46,12 @@ const CartModal = () => {
                         size={'32px'}
                         className="cursor-pointer"
                         onClick={() => setIsModalOpen(false)}
-                        fill={'#2D382A'}    
+                        fill={'#990011FF'}    
                     />
                     
                 </div>
                     
-                    <main className="h-[70%] w-full border-b-darkGreen border-b-[1px] overflow-scroll">
+                    <main className="h-[70%] w-full border-b-strongRed border-b-[1px] overflow-scroll">
                         {cart.map((product, i) => (
                             <CartProduct
                                 key={product.id}
@@ -69,14 +69,14 @@ const CartModal = () => {
 
                             <button
                                 onClick={() => deleteCart()}
-                                className="p-4 bg-darkGreen"
+                                className="p-4 bg-strongRed"
                             >
                                 <RiDeleteBin5Line fill="white" />
                             </button>
                         </div>
 
                         <button
-                                className="bg-darkGreen text-white w-full py-4"
+                                className="bg-strongRed text-white w-full py-4"
                                 onClick={() => handleCheckout()}
                                 disabled={cart.length === 0}
                         >
