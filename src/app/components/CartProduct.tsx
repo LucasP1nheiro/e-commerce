@@ -39,6 +39,14 @@ const CartProduct = ({ image, title, price, id }: CartProductProps) => {
         }
     }
 
+    function limitStringLength(str: string): string {
+        if (str.length <= 30) {
+          return str;
+        }
+      
+        return str.slice(0, 30) + "...";
+    }
+
 
     return (
     <div className="flex gap-4 py-3">
@@ -52,7 +60,7 @@ const CartProduct = ({ image, title, price, id }: CartProductProps) => {
                         onMouseLeave={() => setHoverTitle(false)}
                         className={hoverTitle ? "w-fit cursor-pointer underline" : "w-fit"}
                     >
-                        {title}
+                        {limitStringLength(title)}
                     </h1>
                 </Link>
 
@@ -61,12 +69,12 @@ const CartProduct = ({ image, title, price, id }: CartProductProps) => {
                         size={'24px'}
                         width={'24px'}
                         className="cursor-pointer"
-                        fill={'#2D382A'} 
+                        fill={'#990011FF'} 
                         onClick={() => deleteProduct()}
                     /> 
                 </div> 
             </div>
-            <div className="flex justify-between w-1/2">
+            <div className="flex justify-between md:w-1/2 w-full">
                 <div className="flex gap-4 border-gray-200 border-y-[1px]">
                     <AiOutlineMinus
                         className="border-gray-200 border-x-[1px] cursor-pointer p-1"

@@ -27,7 +27,7 @@ const CartModal = () => {
         setIsModalOpen(false)
     }
 
-   
+    
     
     return (
         <>
@@ -38,7 +38,7 @@ const CartModal = () => {
                     animate={{ x: 0 }}
                     transition={{ duration: 0.7 }}
                     exit={{ x: '100vw' }}
-                    className="w-1/3 h-screen fixed right-0 top-0 bg-white z-20 p-8 shadow-lg shadow-black flex flex-col items-center justify-around"         
+                    className="2xl:w-1/3 md:w-1/2 w-full h-screen fixed right-0 top-0 bg-white z-20 p-8 shadow-lg shadow-black flex flex-col items-center justify-around"         
             >
                 <div className="flex h-[10%] w-full justify-between items-center p-2">
                     <h1 className="text-2xl font-semibold uppercase">Your order</h1>  
@@ -63,9 +63,9 @@ const CartModal = () => {
                         ))}
                     </main>
                     
-                    <div className="h-[10%] flex flex-col w-2/3 gap-4 items-center justify-between">
+                    <div className="md:h-[10%] h-[15%] flex flex-col w-2/3 gap-4 items-center justify-between">
                         <div className="w-full flex justify-between items-center ">
-                            <p className="text-2xl uppercase font-semibold">Total: ${Math.round(totalPrice)},00</p>    
+                            <p className="md:text-2xl text-lg uppercase font-semibold">Total: ${Math.round(totalPrice)},00</p>    
 
                             <button
                                 onClick={() => deleteCart()}
