@@ -19,7 +19,7 @@ const Cart = () => {
           className='flex items-center justify-center text-center cursor-pointer'
       >
           <AiOutlineShoppingCart size={32} fill='#990011FF' />
-          <p className="bg-strongRed h-8 w-8 p-[6px] rounded-full text-white text-sm relative right-2 bottom-4 z-50">
+          <p className="bg-strongRed h-8 w-8 p-[6px] rounded-full text-white text-sm relative right-2 bottom-4 z-20">
               {handleCartSize()}
           </p>
       </div>

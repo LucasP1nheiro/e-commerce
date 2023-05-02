@@ -2,15 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-::-webkit-scrollbar {
-    width: 12px;
-    
-  }
+
   
-  ::-webkit-scrollbar-thumb {
-    background-color: #990011FF;
-    border-radius: 16px;
-  }
+  
 
   html {
     scroll-behavior: smooth;

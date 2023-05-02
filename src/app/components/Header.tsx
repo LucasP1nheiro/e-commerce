@@ -5,8 +5,9 @@ import React, { useEffect, useState } from 'react'
 import PossibleProducts from './PossibleProducts'
 import Cart from './Cart'
 import Link from 'next/link'
-import { AiOutlineSearch } from 'react-icons/ai'
+import { AiOutlineClose, AiOutlineSearch } from 'react-icons/ai'
 import logo from '../../../public/logo.svg'
+import { motion } from 'framer-motion'
 
 interface ProductsType {
   id: number,
@@ -27,6 +28,7 @@ const Header = () => {
   const [data, setData] = useState<ProductsType[]>([])
   const [shouldRedirect, setShouldRedirect] = useState(false)
   const { push } = useRouter()
+  const [showInput, setShowInput] = useState(false)
   
 
   const clearInput = () => {
@@ -45,6 +47,11 @@ const Header = () => {
     }
   }
 
+  const handleInputHide = () => {
+    setShowInput(false)
+    setSearch("")
+  }
+
 
   useEffect(() => {
     if (shouldRedirect) { 
@@ -58,34 +65,68 @@ const Header = () => {
   useEffect(() => {
     handleFetch()
   }, [])
+
+
   
 
   return (
-    <div className="w-screen h-[7vh] flex justify-between px-44 items-center fixed z-10 bg-white border-b-strongRed border-2 top-0 left-0">
+    <nav className="w-screen h-[10vh] flex justify-between lg:px-36 xl:px-72 items-center fixed z-10 bg-white border-b-strongRed border-2 top-0 left-0 px-4">
     
       <Link href='/'>
         <img
           src={logo.src}
           alt="logo"
-          className="h-8"
+          className="h-8 hidden md:block"
         />
       </Link>
-      <div className="flex gap-4 items-center w-1/4 ">
+
+      {!showInput && (
+        <Link href='/'>
+        <img
+          src={logo.src}
+          alt="logo"
+          className="w-48 block md:hidden pr-24"
+        />
+      </Link>
+      )}
+      <div className="flex gap-4 items-center w-full md:w-fit">
         <div className="flex flex-col w-full">
-          <div className="flex items-center gap-2 bg-white rounded-xl p-1 border-strongRed border-2">
-            <AiOutlineSearch size={'24px'} fill='#990011FF'/>
-              <input
-                placeholder="Search product"
-                type="text"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                className="outline-none"
-                onKeyDown={(e) => handleRedirect(e)}
-              />
+          <div className="flex items-center gap-2 bg-white  p-1  z-50">
+            {!showInput && (
+              <AiOutlineSearch
+              size={24}
+              fill='#990011FF'
+              className="rounded-full bg-white p-1 w-fit h-fit hover:bg-strongRed/10 duration-300 cursor-pointer"
+              onClick={() => setShowInput(true)}
+            />
+            )}
+            {showInput && (
+              <>
+                <AiOutlineClose
+                  size={24}
+                  fill='#990011FF'
+                  className="rounded-full bg-white p-1 w-fit h-fit hover:bg-strongRed/10 duration-300 cursor-pointer"
+                  onClick={() => handleInputHide()}
+                />
+
+                <motion.input
+                  initial={{ width: '0' }}
+                  animate={{ width: '100%' }}
+                  transition={{ duration: 0.6 }}
+                  exit={{width: '0'}}
+                  placeholder="Search product"
+                  type="text"
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                  className="outline-none border-strongRed border-b-2 text-strongRed w-full"
+                  onKeyDown={(e) => handleRedirect(e)}
+                />
+              </>
+            )}
             </div>
-            <div className="absolute top-14 w-1/3">
+            <div className="absolute top-14 md:w-[300px] w-full">
               {data.map((product) =>
-                search.length > 2 && product.title.toLowerCase().includes(search.toLocaleLowerCase( )) && (
+                search.length > 2 && product.title.toLowerCase().includes(search.toLocaleLowerCase()) && (
                   <PossibleProducts
                     key={product.id}
                     image = {product.image}
@@ -97,9 +138,17 @@ const Header = () => {
               )}
             </div>
         </div>
-        <Cart />
+        <div className="hidden md:block">
+          <Cart />
+        </div>
+
+        {!showInput && (
+          <div className="block md:hidden">
+          <Cart />
+        </div>
+        )}
       </div>
-    </div>
+    </nav>
   )
 }
 
