@@ -70,7 +70,7 @@ const Header = () => {
   
 
   return (
-    <nav className="w-screen h-[10vh] flex justify-between lg:px-36 xl:px-72 items-center fixed z-10 bg-white border-b-strongRed border-2 top-0 left-0 px-4">
+    <nav className="w-screen h-[8vh] flex justify-between lg:px-36 xl:px-72 items-center fixed z-10 bg-white border-b-strongRed border-2 top-0 left-0 px-4">
     
       <Link href='/'>
         <img
