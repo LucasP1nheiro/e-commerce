@@ -1,3 +1,18 @@
+<div align="center">
+  <h2>
+    <a href="https://pomodoro-app-sepia.vercel.app">pomodoro-app-sepia.vercel.app</a>
+  </h2>
+  <br>
+  <div>
+    <img src="public/thumbnail.svg" height=500/>
+  </div>
+  <br>
+  <div >
+    <p>Built with <a href="https://nextjs.org">Next.js</a>🚀</p>
+  </div>
+</div>
+
+
 #  E-commerce App 🛍️
 
 🚀 Built with React.js and Next.js 🚀
