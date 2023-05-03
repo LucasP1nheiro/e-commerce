@@ -94,18 +94,18 @@ const Header = () => {
           <div className="flex items-center gap-2 bg-white  p-1  z-50">
             {!showInput && (
               <AiOutlineSearch
-              size={24}
+              size={32}
               fill='#990011FF'
-              className="rounded-full bg-white p-1 w-fit h-fit hover:bg-strongRed/10 duration-300 cursor-pointer"
+              className="rounded-full bg-white p-1  hover:bg-strongRed/10 duration-300 cursor-pointer"
               onClick={() => setShowInput(true)}
             />
             )}
             {showInput && (
               <>
                 <AiOutlineClose
-                  size={24}
+                  size={32}
                   fill='#990011FF'
-                  className="rounded-full bg-white p-1 w-fit h-fit hover:bg-strongRed/10 duration-300 cursor-pointer"
+                  className="rounded-full bg-white p-1  hover:bg-strongRed/10 duration-300 cursor-pointer"
                   onClick={() => handleInputHide()}
                 />
 
