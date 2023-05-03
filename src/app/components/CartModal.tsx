@@ -38,7 +38,7 @@ const CartModal = () => {
                     animate={{ x: 0 }}
                     transition={{ duration: 0.7 }}
                     exit={{ x: '100vw' }}
-                    className="2xl:w-1/3 md:w-1/2 w-full h-screen fixed right-0 top-0 bg-white z-20 p-8 shadow-lg shadow-black flex flex-col items-center justify-around"         
+                    className="2xl:w-1/3 md:w-1/2 w-full h-screen fixed right-0 top-0 bg-white z-[100] p-8 shadow-lg shadow-black flex flex-col items-center justify-around"         
             >
                 <div className="flex h-[10%] w-full justify-between items-center p-2">
                     <h1 className="text-2xl font-semibold uppercase">Your order</h1>  
@@ -51,7 +51,7 @@ const CartModal = () => {
                     
                 </div>
                     
-                    <main className="h-[70%] w-full border-b-strongRed border-b-[1px] overflow-scroll">
+                    <main className="h-[70%] w-full border-b-strongRed border-b-[1px] overflow-y-scroll">
                         {cart.map((product, i) => (
                             <CartProduct
                                 key={product.id}
