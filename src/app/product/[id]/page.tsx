@@ -1,7 +1,6 @@
 'use client'
 
 import axios from 'axios'
-import {usePathname} from 'next/navigation'
 import { useContext, useEffect, useState } from 'react'
 import {CartContext} from '../../context/CartContext'
 import Loading from '../../loading'
@@ -21,11 +20,13 @@ interface ProductsType {
       count: number
     }
 }
+interface Params {
+    params: {
+        id: string
+    }
+}
 
-const Page = () => {
-    // getting id like this while useParams doesn't work
-    const path = usePathname()
-    const id = path.replace('/product/', '')
+const Page = ({params: {id}}: Params) => {
     const [data, setData] = useState<ProductsType | null>(null)
     const { cart, setCart } = useContext(CartContext)
     const [alreadyOnCart, setAlreadyOnCart] = useState(false)
