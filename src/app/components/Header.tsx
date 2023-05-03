@@ -70,7 +70,7 @@ const Header = () => {
   
 
   return (
-    <nav className="w-screen h-[8vh] flex justify-between lg:px-36 xl:px-72 items-center fixed z-10 bg-white border-b-strongRed border-2 top-0 left-0 px-4">
+    <nav className="w-screen h-[10vh] flex justify-between lg:px-36 xl:px-72 items-center fixed z-50 bg-white border-b-strongRed border-2 top-0 left-0 px-4 ">
     
       <Link href='/'>
         <img
@@ -85,12 +85,12 @@ const Header = () => {
         <img
           src={logo.src}
           alt="logo"
-          className="w-48 block md:hidden pr-24"
+          className="h-8 block md:hidden"
         />
       </Link>
       )}
-      <div className="flex gap-4 items-center w-full md:w-fit">
-        <div className="flex flex-col w-full">
+      <div className="h-full flex gap-4 items-center w-full justify-end md:w-[300px]">
+        <div className={showInput ? "flex flex-col w-full" : "flex flex-col w-fit"}>
           <div className="flex items-center gap-2 bg-white  p-1  z-50">
             {!showInput && (
               <AiOutlineSearch
