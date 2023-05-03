@@ -85,7 +85,7 @@ const ProductCard = ({data}: ProductCardProps) => {
             transition={{ duration: 0.3}}
             exit={{  opacity: 0 }}
             onClick={() => addToCart()}
-            className="flex justify-center items-center gap-4 w-full  p-2 bg-strongRed"
+            className="md:flex justify-center items-center gap-4 w-full  p-2 bg-strongRed hidden"
             >
               
               <BsCartPlus fill="white" size={32} />
@@ -96,6 +96,15 @@ const ProductCard = ({data}: ProductCardProps) => {
           </>
         )}
       </AnimatePresence>
+
+      <button 
+        onClick={() => addToCart()}
+        className="flex justify-center items-center gap-4 w-full  p-2 bg-strongRed md:hidden"
+        >
+          
+          <BsCartPlus fill="white" size={32} />
+          <p className="text-white uppercase font-semibold">Add to cart</p>
+      </button>
     </div>
   )
 }
