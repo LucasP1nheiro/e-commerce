@@ -1,6 +1,6 @@
 <div align="center">
   <h2>
-    <a href="https://pomodoro-app-sepia.vercel.app">pomodoro-app-sepia.vercel.app</a>
+    <a href="https://shop-ease-lucasp1nheiro.vercel.app">shop-ease-lucasp1nheiro.vercel.app</a>
   </h2>
   <br>
   <div>
