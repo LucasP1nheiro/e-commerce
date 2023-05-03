@@ -22,17 +22,17 @@ const Checkout = () => {
       <>
           {hasCheckedOut && (
               <div className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex justify-center items-center z-50">
-              <div className="bg-green-500 w-1/2 h-1/2 flex flex-col items-center justify-evenly  shadow-2xl">
+              <div className="bg-white w-1/2 h-1/2 flex flex-col items-center justify-evenly  shadow-2xl">
                   <div className="w-3/4 flex justify-end">
                     <AiOutlineClose
                         size={'64px'}                
                         className="cursor-pointer"
-                        fill={'#ffffff'}
+                        fill={'#22c55e'}
                         onClick={() => closeModal()}
                     /> 
                   </div>
                   <Check />
-                <p className="text-white text-2xl font-semibold">Thank you for your purchase! Your order has been confirmed.</p>
+                <p className="text-green-500 text-2xl font-semibold">Thank you for your purchase! Your order has been confirmed.</p>
             </div>
         </div>
         )}
