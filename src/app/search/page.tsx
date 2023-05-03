@@ -21,7 +21,7 @@ interface ProductsType {
   }
 }
 
-const page = () => {
+const Page = () => {
   const [data, setData] = useState<ProductsType[]>([])
   const [isLoading, setIsLoading] = useState(true)
   const searchParams = useSearchParams();
@@ -57,7 +57,7 @@ const page = () => {
     
           <div className="w-5/6 flex gap-10 flex-wrap items-center ">
           {data?.map(product => search && product.title.toLowerCase().includes(search) && (
-            <ProductCard data={product} />
+            <ProductCard data={product} key={product.id} />
           ))}
           </div>
 
@@ -67,4 +67,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

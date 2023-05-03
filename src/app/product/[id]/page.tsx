@@ -22,7 +22,7 @@ interface ProductsType {
     }
 }
 
-const page = () => {
+const Page = () => {
     // getting id like this while useParams doesn't work
     const path = usePathname()
     const id = path.replace('/product/', '')
@@ -105,4 +105,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

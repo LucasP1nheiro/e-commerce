@@ -55,7 +55,7 @@ const ProductsByCategorie = ({ categorie }: { categorie: string }) => {
               onMouseLeave={() => setHover(false)}
           >
           {data?.map(product => (
-              <Carousel.Slide>
+              <Carousel.Slide key={product.id}>
                   <ProductCard data={product}/>
               </Carousel.Slide>
           ))}
