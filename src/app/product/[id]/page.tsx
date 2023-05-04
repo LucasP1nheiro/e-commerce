@@ -74,9 +74,9 @@ const Page = ({params: {id}}: Params) => {
           )}
           
           {!isLoading && (
-            <div className="min-h-screen w-screen flex flex-col items-center md:py-12 py-32 gap-24">
+            <div className=" w-screen flex flex-col items-center md:py-12 py-32 gap-24">
           
-              <div className="h-screen w-screen flex xl:justify-around justify-evenly items-center flex-col xl:flex-row gap-12 md:gap-0">
+              <div className="min-h-screen w-screen flex xl:justify-around justify-evenly items-center flex-col xl:flex-row gap-12 md:gap-0">
                 <img     
                 src={data?.image}
                 alt={`${data?.title} Image`}

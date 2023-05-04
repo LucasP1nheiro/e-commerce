@@ -51,8 +51,8 @@ const Page = () => {
       )}
 
       {!isLoading && (
-        <main className="mt-20 flex flex-col items-center gap-10">
-          <h1 className="text-3xl">Showing search results for : {search}</h1>
+        <main className="my-32 flex flex-col items-center gap-10">
+          <h1 className="md:text-3xl text-xl">Showing search results for : {search}</h1>
     
     
           <div className="w-5/6 flex gap-10 flex-wrap items-center ">
