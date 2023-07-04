@@ -1,12 +1,16 @@
-import bg from '../assets/banner.svg'
-import { Redressed, Italiana } from 'next/font/google'
+import banner from '../assets/banner.svg'
+import { Poppins, Noto_Serif_JP } from 'next/font/google'
+import Image from 'next/image'
+import Link from 'next/link'
 
-const redressed = Redressed({
+
+
+const noto = Noto_Serif_JP({
   weight: '400',
   subsets: ['latin'],
 })
 
-const italiana = Italiana({
+const poppins = Poppins({
   weight: '400',
   subsets: ['latin'],
 })
@@ -15,32 +19,33 @@ const italiana = Italiana({
 const Banner = () => {
   
   return (
-    <div
-      style={{ backgroundImage: `url(${bg.src})` }}
-      className={`w-screen h-screen flex flex-col gap-8 justify-center md:px-32 px-10  bg-norepeat bg-cover bg-center`}
-      >
-      <h2
-      className={"md:text-2xl text-xl text-black italic " + redressed.className}
-      >
-        Simple & Elegant
-      </h2>
+    <section
+      className="h-screen w-screen flex justify-around flex-col items-center lg:flex-row mt-10 px-4"
+      > 
 
-      <h1
-      className={"md:text-7xl text-4xl text-black italic  " + italiana.className}
-      >
-        Latest Jewelry <br/>Collections
-      </h1>
+      <Image src={banner} alt="Banner" priority className="w-auto h-auto md:w-4/5 lg:hidden"/>  
+:
+      <div className="flex flex-col gap-8 justify-center items-center text-center lg:text-start lg:items-start">
 
-      <p>Adorn Yourself with Beauty - Shop Our Stunning Jewelry Collection Today!</p>
+        <h1
+          className={"xl:text-7xl md:text-5xl text-3xl text-secondary italic  " + noto.className}
+        >
+          Discover the <br/>Exceptional jewelery <br />With Us
+        </h1>
 
-      <a
-        className="border-black border-2 p-4 px-8 w-fit hover:bg-black hover:text-white duration-200"
-        href="#jewelery"
-      >
-        Shop Now
-      </a>
+        <p className={"text-[#91919B] " + poppins.className}>Adorn Yourself with Beauty - Shop Our Stunning Jewelery Collection Today!</p>
+
+        <Link
+          className="bg-secondary border-2 p-2 px-16 w-fit duration-200 hover:bg-white/70 rounded-md"
+          href="/categories/jewelery"
+        >
+          Shop Now
+        </Link>
+      </div>
+
+      <Image src={banner} alt="Banner" priority className="w-auto h-auto hidden lg:block"/>
           
-    </div>
+    </section>
   )
 }
 

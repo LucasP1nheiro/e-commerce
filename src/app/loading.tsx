@@ -1,10 +1,21 @@
-import {ClipLoader} from 'react-spinners'
+import ProductsWrapper from "./components/ProductsWrapper"
+import CardSkeleton from "./components/card/CardSkeleton"
+
 
 const Loading = () => {
   return (
-    <>
-      <ClipLoader color='#990011FF'/>
-    </>
+    <ProductsWrapper>
+        <CardSkeleton />
+        <CardSkeleton />
+        <CardSkeleton />
+        <CardSkeleton />
+        <CardSkeleton />
+        <CardSkeleton />
+        <CardSkeleton />
+        <CardSkeleton />
+        <CardSkeleton />
+    </ProductsWrapper>
+      
   )
 }
 

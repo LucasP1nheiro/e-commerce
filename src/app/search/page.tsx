@@ -2,10 +2,10 @@
 
 import axios from 'axios';
 import {  useSearchParams } from 'next/navigation'
-import React, { useCallback, useEffect, useState } from 'react'
-import ProductCard from '../components/ProductCard'
-import Loading from '../loading'
-import Header from '../components/Header';
+import React, { useEffect, useState } from 'react'
+import ProductCard from '../components/card/ProductCard'
+import Loading from '../loading'  
+import ProductsWrapper from '../components/ProductsWrapper';
 
 
 interface ProductsType {
@@ -24,6 +24,7 @@ interface ProductsType {
 const Page = () => {
   const [data, setData] = useState<ProductsType[]>([])
   const [isLoading, setIsLoading] = useState(true)
+  const [hasProducts, setHasProducts] = useState(false)
   const searchParams = useSearchParams();
   const search = searchParams.get('q');
 
@@ -36,9 +37,28 @@ const Page = () => {
     setIsLoading(false)
   }
 
+  const productFound = () => {
+    let flag = false
+    if (search) {
+      data.map(product => {
+        if (product.title.toLowerCase().includes(search)) {
+          console.log("achouu")
+          flag = true
+        }
+      })
+      console.log(flag)
+      setHasProducts(flag)
+    }
+  }
+
+  
+
   useEffect(() => {
     handleFetch()
-  }, [search])
+    productFound()
+  }, [search, productFound])
+
+  
 
   
   return (
@@ -50,18 +70,22 @@ const Page = () => {
         </div>
       )}
 
-      {!isLoading && (
-        <main className="my-32 flex flex-col items-center gap-10">
-          <h1 className="md:text-3xl text-xl">Showing search results for : {search}</h1>
+      {!isLoading && hasProducts && (
+        <main className="w-screen h-full my-32 flex flex-col items-center justify-center gap-10"> 
     
-    
-          <div className="w-5/6 flex gap-10 flex-wrap items-center ">
-          {data?.map(product => search && product.title.toLowerCase().includes(search) && (
-            <ProductCard data={product} key={product.id} />
-          ))}
-          </div>
-
+          <ProductsWrapper>
+            {data?.map(product => search && product.title.toLowerCase().includes(search) && (
+                <ProductCard data={product} key={product.id} />
+            ))}
+          </ProductsWrapper>
         </main>
+      )}
+
+      {!hasProducts && (
+        <div className="flex flex-col w-screen h-screen items-center justify-center text-center gap-4">
+            <h1 className="text-secondary text-3xl">Product not found</h1>
+            <h3 className="text-tertiary text-xl">There is no product named {search}</h3>
+        </div>
       )}
     </>
   )
